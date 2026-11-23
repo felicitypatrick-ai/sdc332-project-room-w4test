@@ -1,0 +1,234 @@
+name: Course kit
+
+# SDC332 course kit. Paste this file once, then run it from the Actions tab.
+# Each step writes files or branches in this repository only.
+
+on:
+  workflow_dispatch:
+    inputs:
+      step:
+        description: "Which kit step to run"
+        required: true
+        type: choice
+        options:
+          - start
+          - team-update
+          - releases
+          - speed-up
+      app:
+        description: "Starter app (start step only)"
+        required: false
+        type: choice
+        default: pantry
+        options:
+          - pantry
+          - bike
+          - room
+          - own
+      card:
+        description: "Card number from your instructor (leave blank if you were not given one)"
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  kit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run the kit step
+        shell: bash
+        env:
+          STEP: ${{ inputs.step }}
+          APP: ${{ inputs.app }}
+          WHO: ${{ github.actor }}
+          CARD: ${{ inputs.card }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cat > /tmp/kit.b64 <<'KIT'
+          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
+          KIT
+          python3 - <<'PY'
+          import base64, gzip, hashlib, json, os, subprocess, sys
+          data = json.loads(gzip.decompress(base64.b64decode(open("/tmp/kit.b64").read().replace(" ", "").replace("\n", ""))))
+          step, who = os.environ["STEP"], os.environ["WHO"]
+          D = data["D"]; exec(data["g"])
+          out = open(os.environ["GITHUB_STEP_SUMMARY"], "a")
+          def say(t): print(t); out.write(t + "\n\n")
+          def git(*a): subprocess.run(["git", *a], check=True)
+          def write(p, t):
+              os.makedirs(os.path.dirname(p) or ".", exist_ok=True); open(p, "w").write(t)
+          def change(items):
+              for p, old, new in items:
+                  if old is None:
+                      write(p, new); continue
+                  t = open(p).read() if os.path.exists(p) else ""
+                  if old not in t:
+                      say(f"Stop: the kit could not update {p}, because that file is not as the starter left it. Ask your instructor.")
+                      sys.exit(1)
+                  write(p, t.replace(old, new, 1))
+          if step == "start":
+              if os.path.exists("course/card.json"):
+                  say("Your starter app is already here. Nothing changed."); sys.exit(0)
+              c = (os.environ.get("CARD") or "").strip()
+              if c and not (c.isdigit() and 1 <= int(c) <= D["N"]):
+                  say(f"Stop: the card number must be a whole number from 1 to {D['N']}. Nothing changed."); sys.exit(1)
+              n = int(c) if c else int(hashlib.sha256(who.lower().encode()).hexdigest(), 16) % D["N"] + 1
+              app = os.environ.get("APP") or "pantry"
+              facts, s, e, rel, v = card(D, app, n)
+              for p, t in D[app].get("f", {}).items(): write(p, t)
+              write("course/card.json", json.dumps(facts, indent=2, sort_keys=True) + "\n"); change(s)
+              git("add", "-A"); git("commit", "-q", "-m", "Add the team card" if app == "own" else "Add the starter app and team card"); git("push", "-q", "origin", "HEAD:main")
+              say(f"Done: your team card (card {n}) is on main" + ("" if app == "own" else ", with the starter app") + ". Open course/card.json to read your team's facts.")
+              sys.exit(0)
+          cj = json.load(open("course/card.json")) if os.path.exists("course/card.json") else None
+          if not cj:
+              say("Stop: run the start step first."); sys.exit(1)
+          name = next((a for a in ("pantry", "bike", "room") if D[a]["m"]["title"] == cj.get("app")), None)
+          if not name:
+              say("Stop: this step works on a course starter app. For your own project, your instructor gives you this week's changes."); sys.exit(1)
+          facts, s, e, rel, v = card(D, name, int(cj["card"]))
+          def there(b): return subprocess.run(["git", "rev-parse", "--verify", "-q", "origin/" + b], capture_output=True).returncode == 0
+          def merged(b): return subprocess.run(["git", "merge-base", "--is-ancestor", "origin/" + b, "origin/main"]).returncode == 0
+          def once(b):
+              if there(b):
+                  say(f"Branch {b} is already here, so the kit did not change it. Nothing changed."); sys.exit(0)
+          if step == "team-update":
+              once("team-update")
+              git("checkout", "-q", "-b", "team-update")
+              for p, t in D[name]["n"].items(): write(p, t)
+              change(e)
+              git("add", "-A"); git("commit", "-q", "-m", "Add the team's update: " + D[name]["m"]["up"]); git("push", "-q", "origin", "team-update")
+              say("Done: the team's update is on branch team-update. Open a pull request from team-update into main to start its checks.")
+          elif step == "releases":
+              todo = [(v, items) for v, items in rel if not there(f"release-{v}")]
+              if not todo:
+                  say("All three releases are already here. Nothing changed."); sys.exit(0)
+              v, items = todo[0]
+              made = [x for x, _ in rel if there(f"release-{x}")]
+              log = subprocess.run(["git", "log", "origin/main", "--format=%B"], capture_output=True, text=True).stdout.lower()
+              if made and not (merged(f"release-{made[-1]}") or f"release {made[-1]}" in log or f"release-{made[-1]}" in log):
+                  say(f"Stop: merge the pull request for release {made[-1]} into main first. Nothing changed."); sys.exit(1)
+              rv = subprocess.run(["git", "branch", "-r", "--list", "origin/revert-*"], capture_output=True, text=True).stdout.split()
+              def open_revert(b):
+                  if subprocess.run(["git", "merge-base", "--is-ancestor", b, "origin/main"]).returncode == 0: return False
+                  return subprocess.run(["git", "log", "-1", "--format=%s", b], capture_output=True, text=True).stdout.strip().lower() not in log
+              if [b for b in rv if open_revert(b)]:
+                  say("Stop: a revert branch is not merged into main yet. Merge its pull request first. Nothing changed."); sys.exit(1)
+              git("checkout", "-q", "-b", f"release-{v}", "origin/main")
+              change(items)
+              git("add", "-A"); git("commit", "-q", "-m", f"Release {v}"); git("push", "-q", "origin", f"release-{v}")
+              say(f"Done: release {v} is on branch release-{v}, made from main as it is now. When you have approved it, or rejected it and merged its revert, run this step again for the next release.")
+          elif step == "speed-up":
+              once("speed-up")
+              git("checkout", "-q", "-b", "speed-up")
+              write("scripts/rule_check.py", checks(D, name, facts, v))
+              git("add", "-A"); git("commit", "-q", "-m", "Add the owner's rule checks"); git("push", "-q", "origin", "speed-up")
+              say("Done: the owner's rule checks are on branch speed-up, in scripts/rule_check.py.")
+          PY

@@ -2,7 +2,7 @@
 
 
 def hours_left(capacity, booked):
-    """Return how many room hours are still open."""
+    """Return how many room hours are still open today."""
     return max(capacity - booked, 0)
 
 

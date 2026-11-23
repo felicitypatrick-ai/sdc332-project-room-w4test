@@ -1,0 +1,28 @@
+{
+  "app": "Eastside Library Study Rooms",
+  "card": 4321,
+  "deployment": {
+    "production address": "https://room-card4321.example.com",
+    "time limit for each deploy job (minutes)": 7
+  },
+  "owner's rule": {
+    "bookable room hours per day": 36,
+    "most hours one team can book at a time": 5,
+    "place in line": "the first team on the waitlist is number 1"
+  },
+  "release package": {
+    "artifact name": "room-build-card4321",
+    "keep the artifact for (days)": 7,
+    "test results": "shown on the run's Summary page"
+  },
+  "speed target (seconds per pipeline run)": 40,
+  "team": {
+    "developers": 3,
+    "how a release happens today": "Every change goes through a pull request, and the tests run on it automatically. Every two weeks the lead developer builds a release by hand (about 10 minutes) and copies it to a test server. The volunteer tester tries it over two evenings and writes up any problems. When the tester says yes, the lead developer copies the files to the live server (about 30 minutes) and checks the pages by hand. Undoing a release means rebuilding the old one, about 4 hours.",
+    "releases": "every two weeks",
+    "separate tester": "yes",
+    "tests today": "run automatically on every pull request",
+    "time to undo a release in production": "about 4 hours",
+    "who checks a release": "a volunteer tester tries each release"
+  }
+}
